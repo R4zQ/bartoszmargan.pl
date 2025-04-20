@@ -1,4 +1,4 @@
-// ====================== SYSTEM ZMIANY JĘZYKA ======================
+// ====================== CHANGE LANGUAGE ======================
 const languageButton = document.getElementById('languageButton');
 const languageFlag = document.getElementById('languageFlag');
 let currentLang = 'pl';
@@ -40,7 +40,8 @@ if (languageButton) {
     });
 }
 
-// ====================== POBRANIE CV ======================
+// ====================== CV DOWNLOAD ======================
+
 const downloadCV = document.getElementById('downloadCV');
 if (downloadCV) {
     downloadCV.addEventListener('click', (e) => {
@@ -58,7 +59,8 @@ if (downloadCV) {
     });
 }
 
-// ====================== OBSŁUGA STRONY GŁÓWNEJ ======================
+// ====================== HOME PAGE ======================
+
 function initHomePage() {
     const navLinks = document.querySelectorAll('.navbar a, .cta-button');
     if (navLinks.length > 0) {
@@ -84,7 +86,6 @@ function initHomePage() {
         });
     }
 
-    // Easter Egg
     const pageCorner = document.getElementById('pageCorner');
     const easterEgg = document.getElementById('easterEgg');
     const closeEgg = document.getElementById('closeEgg');
@@ -104,7 +105,6 @@ function initHomePage() {
         });
     }
 
-    // Efekt hackerski
     const pentestingTrigger = document.querySelector('.pentesting-trigger');
     if (pentestingTrigger) {
         pentestingTrigger.addEventListener('click', function(e) {
@@ -131,7 +131,6 @@ function initHomePage() {
         });
     }
 
-    // Formularz kontaktowy
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -171,7 +170,6 @@ function initHomePage() {
         });
     }
 
-    // Przycisk przewijania w dół
     const scrollDownBtn = document.querySelector('.scroll-down-btn');
     if (scrollDownBtn) {
         scrollDownBtn.addEventListener('click', () => {
@@ -183,7 +181,7 @@ function initHomePage() {
     }
 }
 
-// ====================== ANIMACJA TEKSTU ======================
+// ====================== TEXT ANIMATION ======================
 let textAnimationTimer = null;
 
 function initializeTextAnimation() {
@@ -244,11 +242,11 @@ function initializeTextAnimation() {
     });
 }
 
+// ====================== CONTENT LOADR ======================
 document.addEventListener('DOMContentLoaded', function() {
     initializeTextAnimation();
 });
 
-// ====================== INICJALIZACJA STRONY ======================
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
