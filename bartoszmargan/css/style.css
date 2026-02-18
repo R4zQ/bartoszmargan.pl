@@ -40,6 +40,13 @@
     box-sizing: border-box;
 }
 
+img,
+button,
+a {
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
 html {
     scroll-behavior: smooth;
     overflow-x: hidden;
@@ -53,6 +60,7 @@ body {
     overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    user-select: none;
 }
 
 body::-webkit-scrollbar {
@@ -1334,6 +1342,16 @@ body::-webkit-scrollbar {
     height: 18px;
     filter: brightness(0) saturate(100%) invert(64%) sepia(89%) saturate(459%) hue-rotate(347deg) brightness(100%) contrast(100%);
 }
+
+.form-result {
+    min-height: 20px;
+    margin-top: 10px;
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+.form-result--ok { color: #4ade80; }
+.form-result--err { color: #f87171; }
 
 .ct-email {
     margin-top: 20px;

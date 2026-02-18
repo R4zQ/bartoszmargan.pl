@@ -229,6 +229,50 @@ function initProjectCarousel() {
     });
 }
 
+/* formularz kontaktowy */
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const submitBtn = form.querySelector('.ct-submit');
+        const result = document.getElementById('formResult');
+        const msgs = {
+            ok:  { pl: 'Wiadomość wysłana! Odezwę się wkrótce.', en: 'Message sent! I will get back to you soon.' },
+            err: { pl: 'Coś poszło nie tak. Spróbuj ponownie.',  en: 'Something went wrong. Please try again.' },
+            net: { pl: 'Błąd połączenia. Spróbuj ponownie.',     en: 'Connection error. Please try again.' }
+        };
+
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(new FormData(form)))
+            });
+            const data = await response.json();
+
+            if (response.ok) {
+                result.textContent = msgs.ok[currentLang];
+                result.className = 'form-result form-result--ok';
+                form.reset();
+            } else {
+                result.textContent = msgs.err[currentLang];
+                result.className = 'form-result form-result--err';
+            }
+        } catch {
+            result.textContent = msgs.net[currentLang];
+            result.className = 'form-result form-result--err';
+        } finally {
+            submitBtn.disabled = false;
+            setTimeout(() => { result.textContent = ''; result.className = 'form-result'; }, 5000);
+        }
+    });
+}
+
 /* inicjalizacja */
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage');
@@ -246,4 +290,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initSectionObserver();
     initProjectCarousel();
+    initContactForm();
 });

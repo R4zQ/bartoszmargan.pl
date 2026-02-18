@@ -403,13 +403,18 @@
     <div class="section-container contact-center">
         <h2 class="section-title" data-lang='{"pl":"Napisz do mnie", "en":"Get in touch"}'>Napisz do mnie</h2>
         <p class="contact-subtitle" data-lang='{"pl":"Masz pytanie lub chcesz porozmawiać o współpracy? Napisz - odezwę się najszybciej jak mogę.", "en":"Have a question or want to discuss a collaboration? Write me - I will get back to you as soon as I can."}'>Masz pytanie lub chcesz porozmawiać o współpracy? Napisz — odezwę się najszybciej jak mogę.</p>
-        <form class="ct-form" action="#" method="POST">
+        <form class="ct-form" id="contactForm">
+            <input type="hidden" name="access_key" value="86d5822d-b275-4153-a4ac-f6dce96df7e2">
+            <input type="hidden" name="subject" value="Nowa wiadomość - bartoszmargan.pl">
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
             <div class="ct-row">
                 <input type="text" name="name" placeholder="Imię" data-lang='{"pl":"Imię", "en":"Name"}' required>
                 <input type="email" name="email" placeholder="Email" required>
             </div>
+            <input type="text" name="firma" placeholder="Firma (opcjonalnie)" data-lang='{"pl":"Firma (opcjonalnie)", "en":"Company (optional)"}'>
             <textarea name="message" rows="6" placeholder="Wiadomość..." data-lang='{"pl":"Wiadomość...", "en":"Message..."}' required></textarea>
             <button type="submit" class="ct-submit" data-lang='{"pl":"Wyślij wiadomość", "en":"Send message"}'>Wyślij wiadomość</button>
+            <div id="formResult" class="form-result"></div>
         </form>
         <div class="ct-socials">
             <a href="https://github.com/R4zQ" target="_blank"><img src="assets/social/github.png" alt="GitHub"></a>
