@@ -39,7 +39,9 @@ if (languageButton) {
     languageButton.addEventListener('click', () => {
         const newLang = currentLang === 'pl' ? 'en' : 'pl';
         changeLanguage(newLang);
-        localStorage.setItem('preferredLanguage', newLang);
+        try {
+            localStorage.setItem('preferredLanguage', newLang);
+        } catch (e) {}
     });
 }
 
@@ -275,8 +277,12 @@ function initContactForm() {
 
 /* init */
 document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLanguage');
-    if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
+    let savedLang = null;
+    try {
+        savedLang = localStorage.getItem('preferredLanguage');
+    } catch (e) {}
+
+    if (savedLang === 'pl' || savedLang === 'en') {
         changeLanguage(savedLang);
     } else {
         changeLanguage('pl');
