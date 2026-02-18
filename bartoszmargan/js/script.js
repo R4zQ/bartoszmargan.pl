@@ -1,4 +1,4 @@
-/* zmiana jezyka */
+/* language */
 const languageButton = document.getElementById('languageButton');
 const languageFlag = document.getElementById('languageFlag');
 let currentLang = 'pl';
@@ -43,7 +43,7 @@ if (languageButton) {
     });
 }
 
-/* pobieranie CV */
+/* cv download */
 const downloadCV = document.getElementById('downloadCV');
 if (downloadCV) {
     downloadCV.addEventListener('click', (e) => {
@@ -61,7 +61,7 @@ if (downloadCV) {
     });
 }
 
-/* nawigacja i home */
+/* nav and home */
 function initHomePage() {
     const navLinks = document.querySelectorAll('.navbar a, .cta-button');
     if (navLinks.length > 0) {
@@ -116,7 +116,7 @@ function initHomePage() {
     }
 }
 
-/* animacja tekstu */
+/* typing animation */
 let textAnimationTimer = null;
 
 function initializeTextAnimation() {
@@ -177,7 +177,7 @@ function initializeTextAnimation() {
     });
 }
 
-/* animacja wejscia sekcji */
+/* section observer */
 function initSectionObserver() {
     const sections = document.querySelectorAll('#projects, #skills, #experience, #contact');
     if (!sections.length) return;
@@ -199,7 +199,7 @@ function initSectionObserver() {
     });
 }
 
-/* projekty */
+/* projects */
 function initProjectCarousel() {
     const carousel = document.querySelector('.projects-carousel');
     const prevBtn = document.querySelector('.prev-arrow');
@@ -229,7 +229,7 @@ function initProjectCarousel() {
     });
 }
 
-/* formularz kontaktowy */
+/* contact form */
 function initContactForm() {
     const form = document.getElementById('contactForm');
     if (!form) return;
@@ -273,7 +273,7 @@ function initContactForm() {
     });
 }
 
-/* inicjalizacja */
+/* init */
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {

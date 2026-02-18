@@ -975,6 +975,10 @@ body::-webkit-scrollbar {
         padding: 80px 2rem 80px;
     }
 
+    .section-subtitle {
+        margin-bottom: 60px;
+    }
+
     .projects-slider-wrapper {
         padding: 0;
     }
@@ -993,6 +997,7 @@ body::-webkit-scrollbar {
     }
 
     .github-cta {
+        margin-top: 60px;
         padding: 30px 20px;
         flex-direction: column;
         gap: 15px;
@@ -1000,6 +1005,16 @@ body::-webkit-scrollbar {
 
     .github-cta p {
         margin-bottom: 0;
+    }
+
+    .fixed-bottom-left {
+        left: 20px;
+        bottom: 20px;
+    }
+
+    .fixed-bottom-right {
+        right: 20px;
+        bottom: 20px;
     }
 }
 
@@ -1012,6 +1027,43 @@ body::-webkit-scrollbar {
         font-size: 1.3rem;
         letter-spacing: 3px;
         margin-bottom: 40px;
+    }
+
+    .section-subtitle {
+        margin-bottom: 40px;
+        font-size: 0.88rem;
+    }
+
+    .github-cta {
+        margin-top: 40px;
+    }
+
+    .home-description h2 {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fixed-bottom-left {
+        left: 12px;
+        bottom: 14px;
+    }
+
+    .fixed-bottom-right {
+        right: 12px;
+        bottom: 14px;
+    }
+
+    .cv-button {
+        padding: 10px 14px;
+        font-size: 0.78rem;
+    }
+
+    .lang-button {
+        padding: 8px 12px;
     }
 }
 
@@ -1123,6 +1175,14 @@ body::-webkit-scrollbar {
         text-align: center;
         margin: 0 auto;
         max-width: 100%;
+    }
+
+    .skills-panel {
+        aspect-ratio: unset;
+    }
+
+    .sp-tag {
+        font-size: 1.1rem;
     }
 }
 
@@ -1380,7 +1440,6 @@ body::-webkit-scrollbar {
 }
 
 
-.
 @media (max-width: 768px) {
     .site-footer {
         padding: 24px 2rem;
