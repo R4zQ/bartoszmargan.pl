@@ -1,4 +1,4 @@
-// ====================== CHANGE LANGUAGE ======================
+/* zmiana jezyka */
 const languageButton = document.getElementById('languageButton');
 const languageFlag = document.getElementById('languageFlag');
 let currentLang = 'pl';
@@ -7,17 +7,20 @@ function changeLanguage(lang) {
     try {
         currentLang = lang;
         document.documentElement.lang = lang;
-        
+
         if (languageFlag) {
             languageFlag.src = `assets/change_lang/${lang === 'pl' ? 'polish.png' : 'english.png'}`;
         }
-        
+
+        const langText = document.getElementById('langText');
+        if (langText) langText.textContent = lang.toUpperCase();
+
         document.querySelectorAll('[data-lang]').forEach(element => {
             try {
                 const translations = JSON.parse(element.getAttribute('data-lang'));
                 if (translations?.[lang]) {
-                    if (element.tagName === 'INPUT' && element.type === 'submit') {
-                        element.value = translations[lang];
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang];
                     } else {
                         element.textContent = translations[lang];
                     }
@@ -40,8 +43,7 @@ if (languageButton) {
     });
 }
 
-// ====================== CV DOWNLOAD ======================
-
+/* pobieranie CV */
 const downloadCV = document.getElementById('downloadCV');
 if (downloadCV) {
     downloadCV.addEventListener('click', (e) => {
@@ -59,8 +61,7 @@ if (downloadCV) {
     });
 }
 
-// ====================== HOME PAGE ======================
-
+/* nawigacja i home */
 function initHomePage() {
     const navLinks = document.querySelectorAll('.navbar a, .cta-button');
     if (navLinks.length > 0) {
@@ -69,15 +70,9 @@ function initHomePage() {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                
+
                 if (targetElement) {
-                    const offset = targetId === '#skills' ? 200 : 
-                                 targetId === '#experience' ? 80 : 
-                                 0;
-                    window.scrollTo({
-                        top: targetElement.offsetTop - offset,
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     setTimeout(() => {
                         history.replaceState(null, null, ' ');
                     }, 1000);
@@ -86,6 +81,7 @@ function initHomePage() {
         });
     }
 
+    /* easter egg */
     const pageCorner = document.getElementById('pageCorner');
     const easterEgg = document.getElementById('easterEgg');
     const closeEgg = document.getElementById('closeEgg');
@@ -105,88 +101,27 @@ function initHomePage() {
         });
     }
 
-    const pentestingTrigger = document.querySelector('.pentesting-trigger');
-    if (pentestingTrigger) {
-        pentestingTrigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            const hackEffect = document.getElementById('hackEffect');
-            if (hackEffect) {
-                document.body.classList.add('hack-mode');
-                hackEffect.classList.add('active');
-                
-                const noise = document.createElement('div');
-                noise.className = 'noise-effect';
-                document.body.appendChild(noise);
-                
-                setTimeout(() => noise.remove(), 2000);
-                
-                const closeHack = document.querySelector('.close-hack');
-                if (closeHack) {
-                    closeHack.addEventListener('click', function() {
-                        hackEffect.classList.remove('active');
-                        document.body.classList.remove('hack-mode');
-                    });
-                }
-            }
-        });
-    }
-
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const statusElement = document.getElementById('formStatus');
-            
-            if (!statusElement) return;
-            
-            const name = document.getElementById('name')?.value;
-            const subject = document.getElementById('subject')?.value;
-            const message = document.getElementById('message')?.value;
-            
-            if (!name || !subject || !message) {
-                statusElement.textContent = currentLang === 'pl' 
-                    ? 'Proszę wypełnić wszystkie pola' 
-                    : 'Please fill all fields';
-                statusElement.style.display = 'block';
-                return;
-            }
-            
-            statusElement.textContent = currentLang === 'pl' 
-                ? 'Trwa otwieranie klienta poczty...' 
-                : 'Opening mail client...';
-            statusElement.style.display = 'block';
-            
-            const mailtoLink = `mailto:bartosz.margan@wp.pl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
-                (currentLang === 'pl' ? 'Wiadomość od: ' : 'Message from: ') + `${name}\n\n${message}`
-            )}`;
-            
-            setTimeout(() => {
-                window.location.href = mailtoLink;
-                setTimeout(() => {
-                    statusElement.style.display = 'none';
-                    contactForm.reset();
-                }, 3000);
-            }, 500);
-        });
-    }
-
+    /* scroll down -> projekty */
     const scrollDownBtn = document.querySelector('.scroll-down-btn');
     if (scrollDownBtn) {
         scrollDownBtn.addEventListener('click', () => {
-            const projectsSection = document.querySelector('#projects');
-            if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth' });
+            const projects = document.getElementById('projects');
+            if (projects) {
+                window.scrollTo({
+                    top: projects.offsetTop,
+                    behavior: 'smooth'
+                });
             }
         });
     }
 }
 
-// ====================== TEXT ANIMATION ======================
+/* animacja tekstu */
 let textAnimationTimer = null;
 
 function initializeTextAnimation() {
     const nameElement = document.getElementById('changing-name');
-    
+
     if (!nameElement) {
         return;
     }
@@ -203,11 +138,11 @@ function initializeTextAnimation() {
 
     function animateText() {
         const currentText = ANIMATION_TEXT[currentTextIndex % ANIMATION_TEXT.length];
-        
+
         if (!isDeleting) {
             nameElement.textContent = currentText.substring(0, currentCharPosition);
             currentCharPosition++;
-            
+
             if (currentCharPosition > currentText.length) {
                 textAnimationTimer = setTimeout(() => {
                     isDeleting = true;
@@ -218,13 +153,13 @@ function initializeTextAnimation() {
         } else {
             nameElement.textContent = currentText.substring(0, currentCharPosition);
             currentCharPosition--;
-            
+
             if (currentCharPosition < 0) {
                 isDeleting = false;
                 currentTextIndex++;
             }
         }
-        
+
         const animationSpeed = isDeleting ? DELETING_SPEED_MS : TYPING_SPEED_MS;
         textAnimationTimer = setTimeout(animateText, animationSpeed);
     }
@@ -232,7 +167,7 @@ function initializeTextAnimation() {
     if (textAnimationTimer) {
         clearTimeout(textAnimationTimer);
     }
-    
+
     textAnimationTimer = setTimeout(animateText, INITIAL_DELAY_MS);
 
     window.addEventListener('beforeunload', () => {
@@ -242,11 +177,59 @@ function initializeTextAnimation() {
     });
 }
 
-// ====================== CONTENT LOADR ======================
-document.addEventListener('DOMContentLoaded', function() {
-    initializeTextAnimation();
-});
+/* animacja wejscia sekcji */
+function initSectionObserver() {
+    const sections = document.querySelectorAll('#projects, #skills, #experience, #contact');
+    if (!sections.length) return;
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+        if (section.getBoundingClientRect().top > window.innerHeight * 0.85) {
+            section.classList.add('section-hidden');
+        }
+        observer.observe(section);
+    });
+}
+
+/* projekty */
+function initProjectCarousel() {
+    const carousel = document.querySelector('.projects-carousel');
+    const prevBtn = document.querySelector('.prev-arrow');
+    const nextBtn = document.querySelector('.next-arrow');
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    const getCards = () => [...carousel.querySelectorAll('.project-card')];
+
+    const getCurrentIndex = () => {
+        const cards = getCards();
+        const gap = parseFloat(window.getComputedStyle(carousel).gap) || 30;
+        const cardWidth = cards[0]?.getBoundingClientRect().width || 0;
+        return Math.round(carousel.scrollLeft / (cardWidth + gap));
+    };
+
+    prevBtn.addEventListener('click', () => {
+        const cards = getCards();
+        const target = cards[Math.max(0, getCurrentIndex() - 1)];
+        if (target) carousel.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const cards = getCards();
+        const target = cards[Math.min(cards.length - 1, getCurrentIndex() + 1)];
+        if (target) carousel.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    });
+}
+
+/* inicjalizacja */
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
@@ -255,9 +238,12 @@ document.addEventListener('DOMContentLoaded', () => {
         changeLanguage('pl');
     }
 
+    initializeTextAnimation();
+
     if (document.getElementById('home')) {
         initHomePage();
     }
-    
-    
+
+    initSectionObserver();
+    initProjectCarousel();
 });

@@ -15,327 +15,422 @@
     <meta property="og:title" content="Bartosz Margan - Portfolio">
     <meta property="og:description" content="Bartosz Margan | Student Informatyki Stosowanej #Programowanie #Cyberbezpieczeństwo #Portfolio Moje projekty i doświadczenia w dziedzinie tworzenia oprogramowania i analizy systemów">
     <meta property="og:image" content="https://bartoszmargan.pl/assets/preview/preview.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bartosz Margan - Portfolio">
-    <meta name="twitter:description" content="Bartosz Margan | Student Informatyki Stosowanej #Programowanie #Cyberbezpieczeństwo #Portfolio Moje projekty i doświadczenia w dziedzinie tworzenia oprogramowania i analizy systemów">
-    <meta name="twitter:image" content="https://bartoszmargan.pl/assets/preview/preview.png">
-    
+
     <link rel="canonical" href="https://bartoszmargan.pl" />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-    
 <body>
-    <!-- ==================== NAVIGATION ==================== -->
-    <div class="navbar">
-        <div class="icon-wrapper">
-            <a href="#home"><img src="assets/menu/home.png" alt="O mnie"><span class="tooltip" data-lang='{"pl":"O mnie", "en":"About me"}'>O mnie</span></a>
+<div class="navbar">
+    <div class="icon-wrapper">
+        <a href="#home"><img src="assets/menu/home.png" alt="O mnie"><span class="tooltip" data-lang='{"pl":"O mnie", "en":"About me"}'>O mnie</span></a>
+    </div>
+    <div class="icon-wrapper">
+        <a href="#projects"><img src="assets/menu/projects.png" alt="Moje projekty"><span class="tooltip" data-lang='{"pl":"Moje projekty", "en":"My projects"}'>Moje projekty</span></a>
+    </div>
+    <div class="icon-wrapper">
+        <a href="#skills"><img src="assets/menu/skills.png" alt="Umiejętności"><span class="tooltip" data-lang='{"pl":"Umiejętności", "en":"Skills"}'>Umiejętności</span></a>
+    </div>
+    <div class="icon-wrapper">
+        <a href="#experience"><img src="assets/menu/experience.png" alt="Doświadczenie"><span class="tooltip" data-lang='{"pl":"Doświadczenie", "en":"Experience"}'>Doświadczenie</span></a>
+    </div>
+    <div class="icon-wrapper">
+        <a href="#contact"><img src="assets/menu/contact.png" alt="Kontakt"><span class="tooltip" data-lang='{"pl":"Kontakt", "en":"Contact"}'>Kontakt</span></a>
+    </div>
+</div>
+
+<div class="fixed-bottom-left">
+    <button id="languageButton" class="lang-button">
+        <img src="assets/change_lang/polish.png" alt="Change language" id="languageFlag" class="lang-flag">
+        <span id="langText">PL</span>
+    </button>
+</div>
+
+<div class="fixed-bottom-right">
+    <button id="downloadCV" class="cv-button">
+        <img src="assets/menu/download.png" alt="Download CV" class="cv-icon">
+        <span class="cv-text" data-lang='{"pl":"POBIERZ CV", "en":"DOWNLOAD CV"}'>POBIERZ CV</span>
+    </button>
+</div>
+
+<section id="home">
+    <div class="home-container">
+        <div class="profile-card">
+            <div class="fire-emoji">🔥</div>
+            <div class="profile-image">
+                <img src="assets/profile.png" alt="Bartosz Margan">
+            </div>
+            <div class="card-text">
+                <h2>Bartosz Margan</h2>
+                <div class="contact-item">
+                    <img src="assets/contact/uni.png" alt="University" class="contact-icon">
+                    <span data-lang='{"pl":"Uniwersytet Łódzki", "en":"University of Lodz"}'>Uniwersytet Łódzki</span>
+                </div>
+                <div class="contact-item">
+                    <img src="assets/contact/location.png" alt="Location" class="contact-icon">
+                    <span data-lang='{"pl":"Łódź, Polska", "en":"Lodz, Poland"}'>Łódź, Polska</span>
+                </div>
+                <div class="contact-item">
+                    <img src="assets/contact/email.png" alt="Email" class="contact-icon">
+                    <span>contact@bartoszmargan.pl</span>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/R4zQ" target="_blank" class="social-button"><img src="assets/social/github.png" alt="GitHub"></a>
+                <a href="https://linkedin.com/in/bartoszmargan" target="_blank" class="social-button"><img src="assets/social/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.instagram.com/be_margan" target="_blank" class="social-button"><img src="assets/social/instagram.png" alt="Instagram"></a>
+                <a href="https://x.com/bartoszmargan" target="_blank" class="social-button"><img src="assets/social/X.png" alt="X"></a>
+            </div>
         </div>
-        <div class="icon-wrapper">
-            <a href="#projects"><img src="assets/menu/projects.png" alt="Moje projekty"><span class="tooltip" data-lang='{"pl":"Moje projekty", "en":"My projects"}'>Moje projekty</span></a>
-        </div>
-        <div class="icon-wrapper">
-            <a href="#skills"><img src="assets/menu/skills.png" alt="Umiejętności"><span class="tooltip" data-lang='{"pl":"Umiejętności", "en":"Skills"}'>Umiejętności</span></a>
-        </div>
-        <div class="icon-wrapper">
-            <a href="#experience"><img src="assets/menu/experience.png" alt="Doświadczenie"><span class="tooltip" data-lang='{"pl":"Doświadczenie", "en":"Experience"}'>Doświadczenie</span></a>
-        </div>
-        <div class="icon-wrapper">
-            <a href="#contact"><img src="assets/menu/contact.png" alt="Kontakt"><span class="tooltip" data-lang='{"pl":"Kontakt", "en":"Contact"}'>Kontakt</span></a>
+
+        <div class="home-description">
+            <h1>Cześć, <span id="changing-name"></span><span class="typed-cursor">|</span></h1>
+            <h2 data-lang='{"pl":"Student Informatyki Stosowanej", "en":"Computer Science Student"}'>Student Informatyki Stosowanej</h2>
+            <p data-lang='{"pl":"Jestem pasjonatem inżynierii oprogramowania i cyberbezpieczeństwa. Specjalizuję się w tworzeniu optymalnych rozwiązań programistycznych, od niskopoziomowych systemów po zaawansowane aplikacje.", "en":"I am passionate about software engineering and cybersecurity. I specialize in creating optimal programming solutions, from low-level systems to advanced applications."}'>Jestem pasjonatem inżynierii oprogramowania i cyberbezpieczeństwa. Specjalizuję się w tworzeniu optymalnych rozwiązań programistycznych, od niskopoziomowych systemów po zaawansowane aplikacje.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button" data-lang='{"pl":"Skontaktuj się", "en":"Contact me"}'>Skontaktuj się</a>
+                <a href="#projects" class="cta-button secondary" data-lang='{"pl":"Moje projekty", "en":"My projects"}'>Moje projekty</a>
+            </div>
         </div>
     </div>
-    
-    <!-- ==================== FLOATING BUTTONS ==================== -->
-    <div class="fixed-bottom-left">
-        <button id="languageButton" class="round-button">
-            <img src="assets/change_lang/polish.png" alt="Change language" id="languageFlag">
+
+    <div class="scroll-down-btn-container">
+        <button class="scroll-down-btn" aria-label="Przewiń w dół">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
         </button>
     </div>
 
-    <div class="fixed-bottom-right">
-        <button id="downloadCV" class="cv-button">
-            <img src="assets/menu/download.png" alt="Download CV" class="cv-icon">
-            <span class="cv-text" data-lang='{"pl":"POBIERZ CV", "en":"DOWNLOAD CV"}'>POBIERZ CV</span>
-        </button>
-    </div> 
+    <div class="page-corner" id="pageCorner">
+        <div class="fold"></div>
+    </div>
 
-    <!-- ==================== HOME SECTION ==================== -->
-    <section id="home">
-        <div class="home-container">
-            <div class="profile-card">
-                <div class="fire-emoji">🔥</div>
-                <div class="profile-image">
-                    <img src="assets/profile.png" alt="Bartosz Margan">
+    <div class="easter-egg" id="easterEgg">
+        <div class="egg-content">
+            <h3>✨ Easter Egg! ✨</h3>
+            <p data-lang='{"pl":"Znalazłeś moją sekretną funkcję!", "en":"You found my secret feature!"}'>Znalazłeś moją sekretną funkcję!</p>
+            <p data-lang='{"pl":"Jestem pasjonatem nie tylko kodowania, ale też:", "en":"I am passionate not only about coding but also:"}'>Jestem pasjonatem nie tylko kodowania, ale też:</p>
+            <ul>
+                <li data-lang='{"pl":"Gram w szachy", "en":"I play chess"}'>Gram w szachy</li>
+                <li data-lang='{"pl":"Trenuję tenisa ziemnego", "en":"I train tennis"}'>Trenuję tenisa ziemnego</li>
+                <li data-lang='{"pl":"i czasami czytam ksiązki... 😅", "en":"and sometimes I read books... 😅"}'>i czasami czytam ksiązki... 😅</li>
+            </ul>
+            <button id="closeEgg" class="egg-button" data-lang='{"pl":"Schowaj", "en":"Hide"}'>Schowaj</button>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="section-container">
+        <h2 class="section-title" data-lang='{"pl":"Wyróżnione projekty", "en":"Featured projects"}'>Wyróżnione projekty</h2>
+        <p class="section-subtitle" data-lang='{"pl":"Wybrane realizacje, które najlepiej oddają moje umiejętności i pasję do tworzenia oprogramowania.", "en":"Selected works that best reflect my skills and passion for software development."}'>Wybrane realizacje, które najlepiej oddają moje umiejętności i pasję do tworzenia oprogramowania.</p>
+
+        <div class="projects-slider-wrapper">
+            <button class="slider-arrow prev-arrow" aria-label="Previous project">&lsaquo;</button>
+
+            <div class="projects-carousel">
+                <!-- Projekt 1 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="assets/projects/portfolio.png" alt="Portfolio">
+                    </div>
+                    <div class="project-details">
+                        <h3>bartoszmargan.pl</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <p data-lang='{"pl":"Ta strona - responsywne portfolio z systemem zmiany języka i easter eggami.", "en":"This website - a responsive portfolio with a language change system and Easter eggs."}'>Ta strona — responsywne portfolio z ciemnym motywem, dwujęzycznością i easter eggami.</p>
+                        <div class="project-actions">
+                            <a href="https://github.com/R4zQ/bartoszmargan.pl" target="_blank" class="btn-outline">
+                                <img src="assets/social/github.png" alt="GitHub">
+                                <span data-lang='{"pl":"Kod", "en":"Code"}'>Kod</span>
+                            </a>
+                            <a href="https://bartoszmargan.pl" target="_blank" class="btn-fill">
+                                <span data-lang='{"pl":"Demo", "en":"Demo"}'>Demo</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-text">
-                    <h2>Bartosz Margan</h2>
-                    <div class="contact-item">
-                        <img src="assets/contact/uni.png" alt="University" class="contact-icon">
-                        <span data-lang='{"pl":"Uniwersytet Łódzki", "en":"University of Lodz"}'>Uniwersytet Łódzki</span>
+
+                <!-- Projekt 2 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="assets/projects/gtksnake.png" alt="Portfolio">
                     </div>
-                    <div class="contact-item">
-                        <img src="assets/contact/location.png" alt="Location" class="contact-icon">
-                        <span data-lang='{"pl":"Łódź, Polska", "en":"Lodz, Poland"}'>Łódź, Polska</span>
-                    </div>
-                    <div class="contact-item">
-                        <img src="assets/contact/email.png" alt="Email" class="contact-icon">
-                        <span>contact@bartoszmargan.pl</span>
+                    <div class="project-details">
+                        <h3>GTK Snake</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">GTK</span>
+                            <span class="tech-tag">Cairo</span>
+                        </div>
+                        <p data-lang='{"pl":"Prosty Snake w C++/GTK z unikalną mechaniką wychodzenia poza obszar aplikacji.", "en":"Simple C++/GTK Snake game featuring a unique mechanic that allows the gameplay to extend beyond the application window."}'>Ta strona — responsywne portfolio z ciemnym motywem, dwujęzycznością i easter eggami.</p>
+                        <div class="project-actions">
+                            <a href="https://github.com/R4zQ/GTK-Snake" target="_blank" class="btn-outline">
+                                <img src="assets/social/github.png" alt="GitHub">
+                                <span data-lang='{"pl":"Kod", "en":"Code"}'>Kod</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com/R4zQ" target="_blank" class="social-button"><img src="assets/social/github.png" alt="GitHub"></a>
-                    <a href="https://linkedin.com/in/bartoszmargan" target="_blank" class="social-button"><img src="assets/social/linkedin.png" alt="LinkedIn"></a>
-                    <a href="https://www.instagram.com/be_margan" target="_blank" class="social-button"><img src="assets/social/instagram.png" alt="Instagram"></a>
-                    <a href="https://x.com/bartoszmargan" target="_blank" class="social-button"><img src="assets/social/X.png" alt="X"></a>
+
+                <!-- Projekt 3 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper">
+                        <img src="assets/projects/lostlemur.png" alt="Portfolio">
+                    </div>
+                    <div class="project-details">
+                        <h3>Lost Lemur</h3>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">PyGame</span>
+                        </div>
+                        <p data-lang='{"pl":"Prace Trwają! Innowacyjna gra logiczna, meta-parkour - polegająca na przechodzeniu poziomów manipulując systemem Windows", "en":"Work in Progress! An innovative meta-parkour puzzle game where clearing levels requires manipulating the Windows system itself."}'>Ta strona — responsywne portfolio z ciemnym motywem, dwujęzycznością i easter eggami.</p>
+                        <div class="project-actions">
+                            <button class="btn-fill" disabled>
+                                <img src="assets/social/steam.png" alt="Steam">
+                                <span data-lang='{"pl":"Strona sklepu", "en":"Store page"}'>Strona sklepu</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projekt 4 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper placeholder-wrapper">
+                        <div class="placeholder-content">
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 data-lang='{"pl":"Wkrótce...", "en":"Coming Soon..."}'>Wkrótce...</h3>
+                        <p data-lang='{"pl":"Praca w toku... Sprawdź później!", "en":"Work in progress... Check back later!"}'>Kolejny niesamowity projekt jest w trakcie tworzenia. Sprawdź później!</p>
+                        <div class="project-actions">
+                            <button class="btn-outline" disabled>
+                                <img src="assets/social/github.png" alt="GitHub">
+                                <span data-lang='{"pl":"Kod", "en":"Code"}'>Kod</span>
+                            </button>
+                            <button class="btn-fill" disabled>
+                                <span data-lang='{"pl":"Demo", "en":"Demo"}'>Demo</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projekt 5 -->
+                <div class="project-card">
+                    <div class="project-image-wrapper placeholder-wrapper">
+                        <div class="placeholder-content">
+                            <span>?</span>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <h3 data-lang='{"pl":"Wkrótce...", "en":"Coming Soon..."}'>Wkrótce...</h3>
+                        <p data-lang='{"pl":"Praca w toku... Sprawdź później!", "en":"Work in progress... Check back later!"}'>Kolejny niesamowity projekt jest w trakcie tworzenia. Sprawdź później!</p>
+                        <div class="project-actions">
+                            <button class="btn-outline" disabled>
+                                <img src="assets/social/github.png" alt="GitHub">
+                                <span data-lang='{"pl":"Kod", "en":"Code"}'>Kod</span>
+                            </button>
+                            <button class="btn-fill" disabled>
+                                <span data-lang='{"pl":"Demo", "en":"Demo"}'>Demo</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="slider-arrow next-arrow" aria-label="Next project">&rsaquo;</button>
+        </div>
+
+        <div class="github-cta">
+            <p data-lang='{"pl":"Więcej moich projektów znajdziesz na GitHubie", "en":"You can find more of my projects on GitHub"}'>Więcej moich projektów znajdziesz na GitHubie</p>
+            <a href="https://github.com/R4zQ" target="_blank" class="github-btn">
+                <img src="assets/social/github.png" alt="GitHub">
+                <span data-lang='{"pl":"Zobacz GitHub", "en":"View GitHub"}'>Zobacz GitHub</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="section-container">
+        <div class="skills-split">
+
+            <div class="skills-panel">
+                <div class="sp-section">
+                    <span class="sp-cat" data-lang='{"pl":"Języki", "en":"Languages"}'>Języki</span>
+                    <div class="sp-tags">
+                        <span class="sp-tag sp-main">Java</span>
+                        <span class="sp-tag">Python</span>
+                        <span class="sp-tag">C++</span>
+                        <span class="sp-tag">C#</span>
+                        <span class="sp-tag">JavaScript</span>
+                        <span class="sp-tag">HTML / CSS</span>
+                        <span class="sp-tag">Bash</span>
+                    </div>
+                </div>
+                <div class="sp-section">
+                    <span class="sp-cat" data-lang='{"pl":"Technologie", "en":"Technologies"}'>Technologie</span>
+                    <div class="sp-tags">
+                        <span class="sp-tag">React</span>
+                        <span class="sp-tag">PyGame</span>
+                        <span class="sp-tag">SQL</span>
+                        <span class="sp-tag">PostgreSQL</span>
+                        <span class="sp-tag">Spigot/Paper API</span>
+                    </div>
+                </div>
+                <div class="sp-section">
+                    <span class="sp-cat" data-lang='{"pl":"Narzędzia", "en":"Tools"}'>Narzędzia</span>
+                    <div class="sp-tags">
+                        <span class="sp-tag">Windows</span>
+                        <span class="sp-tag">Linux</span>
+                        <span class="sp-tag">Git (GitHub)</span>
+                        <span class="sp-tag">Docker</span>
+                        <span class="sp-tag">Oracle Cloud</span>
+                        <span class="sp-tag">Jira</span>
+                        <span class="sp-tag">Figma</span>
+                    </div>
                 </div>
             </div>
-    
-            <div class="home-description">
-                <h1>Cześć, </span><span id="changing-name"></span><span class="typed-cursor">|</span></h1>
-                <h2 data-lang='{"pl":"Student Informatyki Stosowanej", "en":"Computer Science Student"}'>Student Informatyki Stosowanej</h2>
-                <p data-lang='{"pl":"Jestem pasjonatem inżynierii oprogramowania i cyberbezpieczeństwa. Specjalizuję się w tworzeniu optymalnych rozwiązań programistycznych, od niskopoziomowych systemów po zaawansowane aplikacje.", "en":"I am passionate about software engineering and cybersecurity. I specialize in creating optimal programming solutions, from low-level systems to advanced applications."}'>Jestem pasjonatem inżynierii oprogramowania i cyberbezpieczeństwa. Specjalizuję się w tworzeniu optymalnych rozwiązań programistycznych, od niskopoziomowych systemów po zaawansowane aplikacje.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button" data-lang='{"pl":"Skontaktuj się", "en":"Contact me"}'>Skontaktuj się</a>
-                    <a href="#projects" class="cta-button secondary" data-lang='{"pl":"Moje projekty", "en":"My projects"}'>Moje projekty</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="scroll-down-btn-container">
-            <button class="scroll-down-btn" aria-label="Przewiń w dół">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-        </div>
 
-        <!-- ==================== EASTER EGG 1 ==================== -->
-        <div class="page-corner" id="pageCorner">
-            <div class="fold"></div>
-        </div>
-        
-        <div class="easter-egg" id="easterEgg">
-            <div class="egg-content">
-                <h3>✨ Easter Egg! ✨</h3>
-                <p data-lang='{"pl":"Znalazłeś moją sekretną funkcję!", "en":"You found my secret feature!"}'>Znalazłeś moją sekretną funkcję!</p>
-                <p data-lang='{"pl":"Jestem pasjonatem nie tylko kodowania, ale też:", "en":"I am passionate not only about coding but also:"}'>Jestem pasjonatem nie tylko kodowania, ale też:</p>
-                <ul>
-                    <li data-lang='{"pl":"Gram w szachy", "en":"I play chess"}'>Gram w szachy</li>
-                    <li data-lang='{"pl":"Trenuję tenisa ziemnego", "en":"I train tennis"}'>Trenuję tenisa ziemnego</li>
-                    <li data-lang='{"pl":"i czasami czytam ksiązki... 😅", "en":"and sometimes I read books... 😅"}'>i czasami czytam ksiązki... 😅</li>
-                </ul>
-                <button id="closeEgg" class="egg-button" data-lang='{"pl":"Schowaj", "en":"Hide"}'>Schowaj</button>
+            <div class="skills-info">
+                <h2 class="section-title" data-lang='{"pl":"Umiejętności", "en":"Skills"}'>Umiejętności</h2>
+                <p class="section-subtitle" data-lang='{"pl":"Zestaw technologii i narzędzi, które wykorzystuję w codziennej pracy.", "en":"A set of technologies and tools I use in my daily work."}'>Zestaw technologii i narzędzi, które wykorzystuję w codziennej pracy.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- ==================== PROJECTS SECTION ==================== -->
-    <section id="projects">
-        <h2 data-lang='{"pl":"MOJE PROJEKTY", "en":"MY PROJECTS"}'>MOJE PROJEKTY</h2>
-        <p class="projects-subtitle" data-lang='{"pl":"Zapraszam do zapoznania się z moimi projektami. Poniżej znajdziesz wybrane realizacje z zakresu programowania, cyberbezpieczeństwa i innych obszarów moich zainteresowań. Każdy projekt to unikalne wyzwanie i okazja do rozwoju.", "en":"I invite you to check out my projects. Below you will find selected works in programming, cybersecurity and other areas of my interest. Each project is a unique challenge and opportunity for growth."}'>Zapraszam do zapoznania się z moimi projektami. Poniżej znajdziesz wybrane realizacje z zakresu programowania, cyberbezpieczeństwa i innych obszarów moich zainteresowań. Każdy projekt to unikalne wyzwanie i okazja do rozwoju.</p>
-        
-        <div class="projects-container">
-            <div class="project-card" data-category="programming">
-                <div class="project-card-inner" style="background-image: url('assets/projects/programming.jpg')">
-                    <div class="project-card-content">
-                        <h3>PROGRAMMING</h3>
-                        <div class="project-details">
-                            <ul>
-                                <li data-lang='{"pl":"Strony internetowe", "en":"Websites"}'>Strony internetowe</li>
-                                <li data-lang='{"pl":"Aplikacje", "en":"Applications"}'>Aplikacje</li>
-                                <li data-lang='{"pl":"Gry", "en":"Games"}'>Gry</li>
-                            </ul>
-                            <button class="project-btn" onclick="window.location.href='/programming'" data-lang='{"pl":"Zobacz więcej", "en":"See more"}'>Zobacz więcej</button>
+        </div>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-container">
+        <h2 class="section-title" data-lang='{"pl":"Doświadczenie", "en":"Experience"}'>Doświadczenie</h2>
+        <p class="section-subtitle" data-lang='{"pl":"Moja ścieżka edukacyjna i zawodowa w świecie IT.", "en":"My educational and professional path in the IT world."}'>Moja ścieżka edukacyjna i zawodowa w świecie IT.</p>
+
+        <div class="exp-groups">
+
+            <!-- doswiadczenie zawodowe -->
+            <div class="exp-group">
+                <span class="exp-group-title" data-lang='{"pl":"Doświadczenie zawodowe", "en":"Work experience"}'>Doświadczenie zawodowe</span>
+                <div class="exp-stack">
+                    <div class="exp-card exp-card--current">
+                        <div class="exp-date">
+                            <span data-lang='{"pl":"cze 2025", "en":"Jun 2025"}'>cze 2025</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span data-lang='{"pl":"teraz", "en":"now"}'>teraz</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Trener programowania - Giganci Programowania", "en":"Programming Trainer - Giganci Programowania"}'>Trener programowania - Giganci Programowania</h3>
+                            <p data-lang='{"pl":"Prowadzenie zajęć z programowania dla dzieci i młodzieży.", "en":"Teaching programming classes for children and teenagers."}'>Prowadzenie zajęć z programowania dla dzieci i młodzieży.</p>
+                        </div>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-date">
+                            <span data-lang='{"pl":"lip 2023", "en":"Jul 2023"}'>lip 2023</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span data-lang='{"pl":"sie 2023", "en":"Aug 2023"}'>sie 2023</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Młodszy Specjalista ds. IT - Tutore", "en":"Junior IT Specialist - Tutore"}'>Młodszy Specjalista ds. IT - Tutore</h3>
+                            <p data-lang='{"pl":"Wsparcie techniczne i obsługa systemów informatycznych.", "en":"Technical support and IT systems management."}'>Wsparcie techniczne i obsługa systemów informatycznych.</p>
+                        </div>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-date">
+                            <span data-lang='{"pl":"kwi 2022", "en":"Apr 2022"}'>kwi 2022</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span data-lang='{"pl":"maj 2022", "en":"May 2022"}'>maj 2022</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Praktykant - SZTORM IT sp. z o.o.", "en":"Intern - SZTORM IT sp. z o.o."}'>Praktykant - SZTORM IT sp. z o.o.</h3>
+                            <p data-lang='{"pl":"Praktyki zawodowe w firmie IT.", "en":"Professional internship at an IT company."}'>Praktyki zawodowe w firmie IT.</p>
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <div class="project-card" data-category="cybersecurity">
-                <div class="project-card-inner" style="background-image: url('assets/projects/cybersecurity.jpg')">
-                    <div class="project-card-content">
-                        <h3>CYBERSECURITY</h3>
-                        <div class="project-details">
-                            <ul>
-                                <li data-lang='{"pl":"Testy penetracyjne", "en":"Penetration tests"}'>Testy penetracyjne</li>
-                                <li data-lang='{"pl":"Analiza podatności", "en":"Vulnerability analysis"}'>Analiza podatności</li>
-                            </ul>
-                            <button class="project-btn" disabled data-lang='{"pl":"Wkrótce", "en":"Coming soon"}'>Wkrótce</button>
+
+            <!-- wyksztalcenie -->
+            <div class="exp-group">
+                <span class="exp-group-title" data-lang='{"pl":"Wykształcenie", "en":"Education"}'>Wykształcenie</span>
+                <div class="exp-stack">
+                    <div class="exp-card exp-card--current">
+                        <div class="exp-date">
+                            <span>10.2023</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span data-lang='{"pl":"teraz", "en":"now"}'>teraz</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Informatyka Stosowana, studia inżynierskie", "en":"Applied Computer Science, engineering studies"}'>Informatyka Stosowana, studia inżynierskie</h3>
+                            <p data-lang='{"pl":"Uniwersytet Łódzki - Wydział Fizyki i Informatyki Stosowanej", "en":"University of Lodz - Faculty of Physics and Applied Computer Science"}'>Uniwersytet Łódzki — Wydział Fizyki i Informatyki Stosowanej</p>
+                        </div>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-date">
+                            <span>09.2019</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span>04.2023</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Technikum Informatyczne", "en":"IT Technical School"}'>Technikum Informatyczne</h3>
+                            <p data-lang='{"pl":"Edukacji Innowacyjnej w Łodzi", "en":"Centre of Innovative Education in Lodz"}'>Centrum Edukacji Innowacyjnej w Łodzi</p>
+                        </div>
+                    </div>
+                    <div class="exp-card">
+                        <div class="exp-date">
+                            <span>2022</span>
+                            <span class="exp-dash">&mdash;</span>
+                            <span>2023</span>
+                        </div>
+                        <div class="exp-content">
+                            <h3 data-lang='{"pl":"Egzaminy zawodowe", "en":"Vocational exams"}'>Egzaminy zawodowe</h3>
+                            <p data-lang='{"pl":"INF.02 - 96% (06.2022) · INF.03 - 93% (02.2023)", "en":"INF.02 - 96% (Jun 2022) · INF.03 - 93% (Feb 2023)"}'>INF.02 - 96% (06.2022) · INF.03 - 93% (02.2023)</p>
                         </div>
                     </div>
                 </div>
             </div>
-    
-            <div class="project-card" data-category="other">
-                <div class="project-card-inner" style="background-image: url('assets/projects/other.jpg')">
-                    <div class="project-card-content">
-                        <h3 data-lang='{"pl":"INNE PROJEKTY", "en":"OTHER PROJECTS"}'>INNE PROJEKTY</h3>
-                        <div class="project-details">
-                            <ul>
-                                <li data-lang='{"pl":"Serwery gier", "en":"Game servers"}'>Serwery gier</li>
-                                <li data-lang='{"pl":"Projekty hardware", "en":"Hardware projects"}'>Projekty hardware</li>
-                                <li data-lang='{"pl":"Eksperymenty", "en":"Experiments"}'>Eksperymenty</li>
-                            </ul>
-                            <button class="project-btn" onclick="window.location.href='/other'" data-lang='{"pl":"Zobacz więcej", "en":"See more"}'>Zobacz więcej</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ==================== SKILLS SECTION ==================== -->
-    <section id="skills" class="skills-section">
-        <div class="skills-container">
-            <h2 data-lang='{"pl":"UMIEJĘTNOŚCI", "en":"SKILLS"}'>UMIEJĘTNOŚCI</h2>
-            <p class="skills-intro" data-lang='{"pl":"Moje kompetencje techniczne i narzędzia, którymi płynnie się posługuję:", "en":"My technical skills and tools I am proficient with:"}'>Moje kompetencje techniczne i narzędzia, którymi płynnie się posługuję:</p>
-            
-            <div class="skills-grid">
-                <div class="skills-column">
-                    <h3 data-lang='{"pl":"Języki programowania", "en":"Programming languages"}'>Języki programowania</h3>
-                    <ul>
-                        <li>Java</li>
-                        <li>C++</li>
-                        <li>C#</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </div>
-                
-                <div class="skills-column">
-                    <h3 data-lang='{"pl":"Technologie", "en":"Technologies"}'>Technologie</h3>
-                    <ul>
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>PostgreSQL</li>
-                        <li>SQL</li>
-                        <li data-lang='{"pl":"React (w trakcie...)", "en":"React (learning...)"}'>React (w trakcie...)</li>
-                    </ul>
-                </div>
-                
-                <div class="skills-column">
-                    <h3 data-lang='{"pl":"Pozostałe", "en":"Other"}'>Pozostałe</h3>
-                    <ul>
-                        <li class="pentesting-trigger" data-lang='{"pl":"Pentesting", "en":"Pentesting"}'>Pentesting</li>
-                        <li data-lang='{"pl":"Administracja Windows/Linux", "en":"Windows/Linux administration"}'>Administracja Windows/Linux</li>
-                        <li data-lang='{"pl":"Wirtualizacja", "en":"Virtualization"}'>Wirtualizacja</li>
-                        <li data-lang='{"pl":"Podstawy DevOps", "en":"DevOps basics"}'>Podstawy DevOps</li>
-                        <li data-lang='{"pl":"Fundamenty UI/UX", "en":"UI/UX fundamentals"}'>Fundamenty UI/UX</li>
-                    </ul>
-                </div>
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ==================== EXPERIENCE SECTION ==================== -->
-    <section id="experience" class="experience-section">
-        <div class="experience-container">
-            <h2 data-lang='{"pl":"DOŚWIADCZENIE", "en":"EXPERIENCE"}'>DOŚWIADCZENIE</h2>
-            <p class="experience-subtitle" data-lang='{"pl":"Moja profesjonalna podróż - od praktykanta do specjalisty IT", "en":"My professional journey - from intern to IT specialist"}'>Moja profesjonalna podróż - od praktykanta do specjalisty IT</p>
-            
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-date">07.2023 - 09.2023</div>
-                    <div class="experience-dot"></div>
-                    <div class="experience-content">
-                        <h3>Tutore Sp. z o.o.</h3>
-                        <h4 data-lang='{"pl":"Młodszy specjalista ds. IT", "en":"Junior IT Specialist"}'>Młodszy specjalista ds. IT</h4>
-                        <ul>
-                            <li data-lang='{"pl":"Wsparcie techniczne dla pracowników", "en":"Technical support for employees"}'>Wsparcie techniczne dla pracowników</li>
-                            <li data-lang='{"pl":"Utrzymanie infrastruktury IT", "en":"IT infrastructure maintenance"}'>Utrzymanie infrastruktury IT</li>
-                            <li data-lang='{"pl":"Prace pomocnicze w dziale IT", "en":"Auxiliary work in IT department"}'>Prace pomocnicze w dziale IT</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="experience-date">04.2022 - 05.2022</div>
-                    <div class="experience-date">╰┈➤ 02.2023 - 03.2023</div>
-                    <div class="experience-dot"></div>
-                    <div class="experience-content">
-                        <h3>Sztorm IT</h3>
-                        <h4 data-lang='{"pl":"Praktyki zawodowe", "en":"Professional internship"}'>Praktyki zawodowe</h4>
-                        <ul>
-                            <li data-lang='{"pl":"Przygotowywanie stanowisk komputerowych", "en":"Preparing computer workstations"}'>Przygotowywanie stanowisk komputerowych</li>
-                            <li data-lang='{"pl":"Konfiguracja sprzętu i oprogramowania", "en":"Hardware and software configuration"}'>Konfiguracja sprzętu i oprogramowania</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="experience-date">2016 - obecnie</div>
-                    <div class="experience-dot"></div>
-                    <div class="experience-content">
-                        <h3 data-lang='{"pl":"Korepetytor", "en":"Tutor"}'>Korepetytor</h3>
-                        <h4 data-lang='{"pl":"Matematyki i Informatyki", "en":"Mathematics and Computer Science"}'>Matematyki i Informatyki</h4>
-                        <ul>
-                            <li data-lang='{"pl":"Indywidualne zajęcia dla uczniów 8-17 lat", "en":"Individual lessons for students aged 8-17"}'>Indywidualne zajęcia dla uczniów 8-17 lat</li>
-                            <li data-lang='{"pl":"Dostosowywanie programu do potrzeb", "en":"Customizing the program to needs"}'>Dostosowywanie programu do potrzeb</li>
-                        </ul>
-                    </div>
-                </div>
+<section id="contact">
+    <div class="section-container contact-center">
+        <h2 class="section-title" data-lang='{"pl":"Napisz do mnie", "en":"Get in touch"}'>Napisz do mnie</h2>
+        <p class="contact-subtitle" data-lang='{"pl":"Masz pytanie lub chcesz porozmawiać o współpracy? Napisz - odezwę się najszybciej jak mogę.", "en":"Have a question or want to discuss a collaboration? Write me - I will get back to you as soon as I can."}'>Masz pytanie lub chcesz porozmawiać o współpracy? Napisz — odezwę się najszybciej jak mogę.</p>
+        <form class="ct-form" action="#" method="POST">
+            <div class="ct-row">
+                <input type="text" name="name" placeholder="Imię" data-lang='{"pl":"Imię", "en":"Name"}' required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
-        </div>
-    </section>
-
-    <!-- ==================== CONTACT SECTION ==================== -->
-    <section id="contact" class="contact-section">
-        <h2 data-lang='{"pl":"KONTAKT", "en":"CONTACT"}'>KONTAKT</h2>
-        <p class="contact-subtitle" data-lang='{"pl":"Masz pytanie lub chcesz współpracować? Napisz do mnie!", "en":"Have a question or want to collaborate? Write to me!"}'>Masz pytanie lub chcesz współpracować? Napisz do mnie!</p>
-        
-        <form id="contactForm" class="contact-form">
-            <div class="form-group">
-                <label for="name" data-lang='{"pl":"Imię i nazwisko", "en":"Full name"}'>Imię i nazwisko</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-              
-            <div class="form-group">
-                <label for="subject" data-lang='{"pl":"Temat", "en":"Subject"}'>Temat</label>
-                <input type="text" id="subject" name="subject" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="message" data-lang='{"pl":"Wiadomość", "en":"Message"}'>Wiadomość</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn" data-lang='{"pl":"Wyślij wiadomość", "en":"Send message"}'>Wyślij wiadomość</button>
-            
-            <div id="formStatus" class="form-status"></div>
+            <textarea name="message" rows="6" placeholder="Wiadomość..." data-lang='{"pl":"Wiadomość...", "en":"Message..."}' required></textarea>
+            <button type="submit" class="ct-submit" data-lang='{"pl":"Wyślij wiadomość", "en":"Send message"}'>Wyślij wiadomość</button>
         </form>
-    </section>
-
-    <!-- ==================== FOOTER ==================== -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <p>Copyright &copy; 2025 Bartosz Margan</p>
+        <div class="ct-socials">
+            <a href="https://github.com/R4zQ" target="_blank"><img src="assets/social/github.png" alt="GitHub"></a>
+            <a href="https://linkedin.com/in/bartoszmargan" target="_blank"><img src="assets/social/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/be_margan" target="_blank"><img src="assets/social/instagram.png" alt="Instagram"></a>
+            <a href="https://x.com/bartoszmargan" target="_blank"><img src="assets/social/X.png" alt="X"></a>
+            <a href="https://discord.com/users/208899622846988288" target="_blank"><img src="assets/social/discord.png" alt="Discord"></a>
+            <a href="https://profile.hackthebox.com/profile/019c7250-4b7f-7049-a6f4-031878be0d6f" target="_blank"><img src="assets/social/htb.png" alt="HackTheBox"></a>
+            <a href="https://www.codewars.com/users/R4zQ" target="_blank"><img src="assets/social/codewars.png" alt="Codewars"></a>
         </div>
-    </footer>
+        <span class="ct-email">contact@bartoszmargan.pl</span>
+    </div>
+</section>
 
-    <!-- ==================== EASTER EGG 2 ==================== -->
-    <div class="hack-effect" id="hackEffect">
-        <div class="terminal">
-          <div class="terminal-header">
-            <span class="red-btn"></span>
-            <span class="yellow-btn"></span>
-            <span class="green-btn"></span>
-            <span class="title">root@kali:~</span>
-          </div>
-          <div class="terminal-content">
-            <p class="typing">$ nmap -sS -T4 192.168.1.1</p>
-            <p class="typing">$ hydra -l admin -P passlist.txt ssh://target</p>
-            <p class="typing">$ msfconsole</p>
-            <p class="access-granted">ACCESS GRANTED</p>
-            <p class="message" data-lang='{"pl":"Wykryto próbę włamania! To tylko symulacja :)", "en":"Intrusion attempt detected! This is just a simulation :)"}'>Wykryto próbę włamania! To tylko symulacja :)</p>
-          </div>
-          <button class="close-hack" data-lang='{"pl":"Zamknij", "en":"Close"}'>Zamknij</button>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <span class="footer-copy">© 2025 Bartosz Margan</span>
         </div>
     </div>
+</footer>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
