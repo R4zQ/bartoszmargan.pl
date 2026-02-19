@@ -917,7 +917,7 @@ body::-webkit-scrollbar {
 }
 
 .github-cta {
-    margin-top: 240px;
+    margin-top: 120px;
     text-align: center;
     padding: 30px;
     border: 1px solid rgba(255, 155, 23, 0.15);
@@ -1016,6 +1016,7 @@ body::-webkit-scrollbar {
         right: 20px;
         bottom: 20px;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -1065,6 +1066,7 @@ body::-webkit-scrollbar {
     .lang-button {
         padding: 8px 12px;
     }
+
 }
 
 /* skills */
@@ -1075,13 +1077,19 @@ body::-webkit-scrollbar {
     align-items: center;
 }
 
+/* info jest pierwsze w DOM, ale na desktopie po prawej */
+.skills-info {
+    grid-column: 2;
+    grid-row: 1;
+}
+
 .skills-panel {
+    grid-column: 1;
+    grid-row: 1;
     background-color: var(--side-color);
     border: 1px solid var(--border-light);
     border-radius: 16px;
     padding: 36px 40px;
-    aspect-ratio: 2 / 1;
-    overflow: hidden;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0 32px;
@@ -1091,7 +1099,6 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
 }
 
 .sp-cat {
@@ -1102,7 +1109,6 @@ body::-webkit-scrollbar {
     color: var(--accent-color);
     opacity: 0.65;
     padding-bottom: 12px;
-    margin-bottom: 0;
     border-bottom: 1px solid var(--border-light);
     width: 100%;
     text-align: center;
@@ -1112,24 +1118,21 @@ body::-webkit-scrollbar {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     flex: 1;
-    padding-top: 18px;
+    padding-top: 16px;
     padding-bottom: 4px;
+    gap: 6px;
 }
 
 .sp-tag {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 500;
     color: var(--white-color);
-    transition: color 0.2s ease;
     cursor: default;
     text-align: center;
-}
-
-.sp-tag:hover {
-    color: var(--white-color);
+    white-space: nowrap;
 }
 
 .sp-tag.sp-main::before {
@@ -1158,15 +1161,19 @@ body::-webkit-scrollbar {
     font-size: 1rem;
 }
 
-@media (max-width: 900px) {
+/* tablet i mobile - uklad pilulkowy */
+@media (max-width: 768px) {
     .skills-split {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
         gap: 40px;
     }
 
-    .skills-info .section-title,
-    .skills-info .section-title::after {
+    .skills-info .section-title {
         text-align: center;
+    }
+
+    .skills-info .section-title::after {
         left: 50%;
         transform: translateX(-50%);
     }
@@ -1178,11 +1185,78 @@ body::-webkit-scrollbar {
     }
 
     .skills-panel {
-        aspect-ratio: unset;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    .sp-section {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0;
+        background-color: var(--side-color);
+        border: 1px solid var(--border-light);
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+    .sp-cat {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        border-bottom: none;
+        border-right: 1px solid var(--border-light);
+        padding: 16px 14px;
+        min-width: 90px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .sp-tags {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 16px;
+        flex: 1;
     }
 
     .sp-tag {
-        font-size: 1.1rem;
+        font-size: 0.85rem;
+        white-space: normal;
+        padding: 3px 11px;
+        border-radius: 7px;
+        background-color: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border-light);
+    }
+
+    .sp-tag.sp-main {
+        border-color: rgba(255, 155, 23, 0.4);
+    }
+
+    .sp-tag.sp-main::before {
+        content: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sp-section {
+        flex-direction: column;
+    }
+
+    .sp-cat {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding: 12px 16px;
+        min-width: unset;
+        width: 100%;
+        height: auto;
     }
 }
 
