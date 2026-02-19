@@ -63,22 +63,66 @@ if (downloadCV) {
     });
 }
 
+/* smooth scroll */
+let smoothScrollTo = null;
+
+function initSmoothScroll() {
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouch) return;
+
+    let targetY = window.scrollY;
+    let currentY = window.scrollY;
+    let rafId = null;
+    const EASE = 0.05;
+
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
+    const clamp = (v) => Math.max(0, Math.min(v, maxScroll()));
+
+    function tick() {
+        currentY = lerp(currentY, targetY, EASE);
+
+        if (Math.abs(targetY - currentY) < 0.5) {
+            currentY = targetY;
+            window.scrollTo(0, currentY);
+            rafId = null;
+            return;
+        }
+
+        window.scrollTo(0, currentY);
+        rafId = requestAnimationFrame(tick);
+    }
+
+    smoothScrollTo = (y) => {
+        targetY = clamp(y);
+        if (!rafId) rafId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        targetY = clamp(targetY + e.deltaY);
+        if (!rafId) rafId = requestAnimationFrame(tick);
+    }, { passive: false });
+}
+
 /* nav and home */
 function initHomePage() {
     const navLinks = document.querySelectorAll('.navbar a, .cta-button');
     if (navLinks.length > 0) {
         navLinks.forEach(anchor => {
             anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (!href || !href.startsWith('#')) return;
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                const targetElement = document.querySelector(href);
+                if (!targetElement) return;
 
-                if (targetElement) {
+                if (smoothScrollTo) {
+                    smoothScrollTo(targetElement.offsetTop);
+                } else {
                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    setTimeout(() => {
-                        history.replaceState(null, null, ' ');
-                    }, 1000);
                 }
+                setTimeout(() => history.replaceState(null, null, ' '), 1000);
             });
         });
     }
@@ -108,11 +152,11 @@ function initHomePage() {
     if (scrollDownBtn) {
         scrollDownBtn.addEventListener('click', () => {
             const projects = document.getElementById('projects');
-            if (projects) {
-                window.scrollTo({
-                    top: projects.offsetTop,
-                    behavior: 'smooth'
-                });
+            if (!projects) return;
+            if (smoothScrollTo) {
+                smoothScrollTo(projects.offsetTop);
+            } else {
+                window.scrollTo({ top: projects.offsetTop, behavior: 'smooth' });
             }
         });
     }
@@ -181,7 +225,7 @@ function initializeTextAnimation() {
 
 /* section observer */
 function initSectionObserver() {
-    const sections = document.querySelectorAll('#projects, #skills, #experience, #contact');
+    const sections = document.querySelectorAll('#projects, #skills, #courses, #experience, #contact');
     if (!sections.length) return;
 
     const observer = new IntersectionObserver((entries) => {
@@ -288,6 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeLanguage('pl');
     }
 
+    initSmoothScroll();
     initializeTextAnimation();
 
     if (document.getElementById('home')) {

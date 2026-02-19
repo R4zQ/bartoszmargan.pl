@@ -48,7 +48,6 @@ a {
 }
 
 html {
-    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
@@ -710,6 +709,7 @@ body::-webkit-scrollbar {
 
 #projects,
 #skills,
+#courses,
 #experience,
 #contact {
     border-top: 1px solid var(--border-light);
@@ -1257,6 +1257,97 @@ body::-webkit-scrollbar {
         min-width: unset;
         width: 100%;
         height: auto;
+    }
+}
+
+/* courses */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.course-card {
+    background-color: var(--side-color);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.course-card:hover {
+    border-color: rgba(255, 155, 23, 0.35);
+    transform: translateY(-3px);
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-provider {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+
+.course-date {
+    font-size: 0.78rem;
+    color: var(--text-color);
+}
+
+.course-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white-color);
+    line-height: 1.4;
+}
+
+.course-desc {
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.course-card--wip {
+    border-style: dashed;
+    border-color: var(--border-medium);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.course-card--wip:hover {
+    opacity: 1;
+    border-color: rgba(255, 155, 23, 0.35);
+    transform: none;
+}
+
+.course-score {
+    display: inline-block;
+    margin-top: 4px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+@media (max-width: 900px) {
+    .courses-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 540px) {
+    .courses-grid {
+        grid-template-columns: 1fr;
     }
 }
 
