@@ -22,6 +22,19 @@
 </head>
 
 <body>
+
+<div id="loader">
+    <div class="loader-content">
+        <div class="loader-logo">
+            <span class="ll-char" style="animation-delay: 0s">&lt;</span>
+            <span class="ll-char ll-slash" style="animation-delay: 0.18s">/</span>
+            <span class="ll-char" style="animation-delay: 0.36s">&gt;</span>
+        </div>
+        <span class="loader-name">Bartosz Margan</span>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+</div>
+
 <div class="navbar">
     <div class="icon-wrapper">
         <a href="#home"><img src="assets/menu/home.png" alt="O mnie"><span class="tooltip" data-lang='{"pl":"O mnie", "en":"About me"}'>O mnie</span></a>
@@ -449,9 +462,7 @@
             <a href="https://linkedin.com/in/bartoszmargan" target="_blank"><img src="assets/social/linkedin.png" alt="LinkedIn"></a>
             <a href="https://www.instagram.com/be_margan" target="_blank"><img src="assets/social/instagram.png" alt="Instagram"></a>
             <a href="https://x.com/bartoszmargan" target="_blank"><img src="assets/social/X.png" alt="X"></a>
-            <a href="https://discord.com/users/208899622846988288" target="_blank"><img src="assets/social/discord.png" alt="Discord"></a>
-            <a href="https://profile.hackthebox.com/profile/019c7250-4b7f-7049-a6f4-031878be0d6f" target="_blank"><img src="assets/social/htb.png" alt="HackTheBox"></a>
-            <a href="https://www.codewars.com/users/R4zQ" target="_blank"><img src="assets/social/codewars.png" alt="Codewars"></a>
+            <button class="discord-copy" id="discordCopy" title="razq_"><img src="assets/social/discord.png" alt="Discord"></button>
         </div>
         <span class="ct-email">contact@bartoszmargan.pl</span>
     </div>
@@ -463,6 +474,8 @@
         </div>
     </div>
 </footer>
+
+<div id="copyToast" class="copy-toast" data-lang='{"pl":"Skopiowano nazwę użytkownika!", "en":"Username copied!"}'></div>
 
 <script src="js/script.js"></script>
 </body>

@@ -63,6 +63,23 @@ if (downloadCV) {
     });
 }
 
+/* loader */
+function initLoader() {
+    const loader = document.getElementById('loader');
+    if (!loader) return;
+
+    const minTime = new Promise(r => setTimeout(r, 1500));
+    const loaded = new Promise(r => {
+        if (document.readyState === 'complete') r();
+        else window.addEventListener('load', r, { once: true });
+    });
+
+    Promise.all([minTime, loaded]).then(() => {
+        loader.classList.add('hidden');
+        loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+    });
+}
+
 /* smooth scroll */
 let smoothScrollTo = null;
 
@@ -73,7 +90,7 @@ function initSmoothScroll() {
     let targetY = window.scrollY;
     let currentY = window.scrollY;
     let rafId = null;
-    const EASE = 0.05;
+    const EASE = 0.07;
 
     const lerp = (a, b, t) => a + (b - a) * t;
     const maxScroll = () => document.documentElement.scrollHeight - window.innerHeight;
@@ -319,6 +336,26 @@ function initContactForm() {
     });
 }
 
+/* discord copy */
+function initDiscordCopy() {
+    const btn = document.getElementById('discordCopy');
+    const toast = document.getElementById('copyToast');
+    if (!btn || !toast) return;
+
+    let toastTimer = null;
+
+    btn.addEventListener('click', () => {
+        navigator.clipboard.writeText('razq_').then(() => {
+            const msg = { pl: 'Skopiowano nazwę użytkownika!', en: 'Username copied!' };
+            toast.textContent = msg[currentLang] || msg.pl;
+            toast.classList.add('visible');
+
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2500);
+        });
+    });
+}
+
 /* init */
 document.addEventListener('DOMContentLoaded', () => {
     let savedLang = null;
@@ -332,6 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         changeLanguage('pl');
     }
 
+    initLoader();
     initSmoothScroll();
     initializeTextAnimation();
 
@@ -342,4 +380,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initSectionObserver();
     initProjectCarousel();
     initContactForm();
+    initDiscordCopy();
 });
