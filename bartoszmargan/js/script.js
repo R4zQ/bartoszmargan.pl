@@ -25,6 +25,10 @@ function changeLanguage(lang) {
                         element.textContent = translations[lang];
                     }
                 }
+                // Handle data-hint attribute for experience cards
+                if (translations?.['data-hint']?.[lang]) {
+                    element.setAttribute('data-hint', translations['data-hint'][lang]);
+                }
             } catch (e) {
                 console.error('Translation error:', e);
             }
@@ -47,18 +51,26 @@ if (languageButton) {
 
 /* cv download */
 const downloadCV = document.getElementById('downloadCV');
+const cvToast = document.getElementById('cvToast');
+let cvToastTimeout;
+
 if (downloadCV) {
     downloadCV.addEventListener('click', (e) => {
         e.preventDefault();
         try {
-            const link = document.createElement('a');
-            link.href = 'assets/cv/Bartosz_Margan_CV.pdf';
-            link.download = 'Bartosz_Margan_CV.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            if (cvToast) {
+                // translate toast content early if language was changed
+                // (it should be automatically handled by the language change logic but to be safe)
+                
+                cvToast.classList.add('visible');
+                
+                clearTimeout(cvToastTimeout);
+                cvToastTimeout = setTimeout(() => {
+                    cvToast.classList.remove('visible');
+                }, 3500);
+            }
         } catch (error) {
-            console.error('CV download error:', error);
+            console.error('CV download handle error:', error);
         }
     });
 }

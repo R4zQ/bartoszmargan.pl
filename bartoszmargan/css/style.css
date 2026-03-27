@@ -44,7 +44,6 @@ img,
 button,
 a {
     -webkit-user-drag: none;
-    user-drag: none;
 }
 
 html {
@@ -52,7 +51,7 @@ html {
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     background-color: var(--main-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -260,7 +259,7 @@ body::-webkit-scrollbar {
     border-radius: var(--radius-btn);
     cursor: pointer;
     color: var(--white-color);
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 2px;
@@ -290,7 +289,7 @@ body::-webkit-scrollbar {
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     font-weight: 510;
     transition: all 0.3s ease;
 }
@@ -428,7 +427,7 @@ body::-webkit-scrollbar {
     padding: 10px 25px;
     border-radius: var(--radius-btn);
     cursor: pointer;
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     font-weight: 600;
     transition: all 0.3s ease;
     margin-top: 20px;
@@ -540,7 +539,6 @@ body::-webkit-scrollbar {
 
 .card-text {
     text-align: center;
-    margin-bottom: 30px;
     width: 100%;
     margin: 10px 0;
 }
@@ -721,7 +719,7 @@ body::-webkit-scrollbar {
 
 @media (max-width: 1100px) {
     .scroll-down-btn{
-        opacity: 0%;
+        opacity: 0;
         cursor: default;
     }
 }
@@ -1355,16 +1353,84 @@ body::-webkit-scrollbar {
     background-color: var(--side-color);
     border: 1px solid var(--border-light);
     border-radius: 16px;
-    padding: 24px 28px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    transition: border-color 0.3s ease, transform 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.course-card.has-link {
+    cursor: pointer;
 }
 
 .course-card:hover {
     border-color: rgba(255, 155, 23, 0.35);
     transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.course-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background-color: #0f0e0d;
+    border-bottom: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+.course-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.course-card:hover .course-img-wrapper img {
+    transform: scale(1.05);
+    opacity: 0.3;
+}
+
+.course-img-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.course-img-overlay span {
+    background-color: var(--accent-color);
+    color: var(--main-color);
+    padding: 8px 16px;
+    border-radius: var(--radius-btn);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-img-overlay {
+    opacity: 1;
+}
+
+.course-card:hover .course-img-overlay span {
+    transform: translateY(0);
+}
+
+.course-content {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
 }
 
 .course-meta {
@@ -1403,16 +1469,20 @@ body::-webkit-scrollbar {
 .course-card--wip {
     border-style: dashed;
     border-color: var(--border-medium);
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     opacity: 0.7;
+}
+
+.course-card--wip .course-content {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .course-card--wip:hover {
     opacity: 1;
     border-color: rgba(255, 155, 23, 0.35);
     transform: none;
+    box-shadow: none;
 }
 
 .course-score {
@@ -1468,6 +1538,7 @@ body::-webkit-scrollbar {
     background-color: var(--side-color);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .exp-card:hover {
@@ -1520,6 +1591,42 @@ body::-webkit-scrollbar {
 .exp-content p {
     font-size: var(--fs-small);
     line-height: 1.6;
+}
+
+.exp-company {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    display: block;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Hide description by default, show only on hover */
+.exp-card:not(.exp-card--current):not(.exp-card--always-open) .exp-content p {
+    display: none;
+}
+
+.exp-card:not(.exp-card--current):not(.exp-card--always-open) .exp-content::after {
+    content: attr(data-hint);
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+.exp-card:not(.exp-card--current):not(.exp-card--always-open):hover .exp-content p {
+    display: block;
+}
+
+.exp-card:not(.exp-card--current):not(.exp-card--always-open):hover .exp-content::after {
+    display: none;
+}
+
+/* Hover hint for non-current cards */
+.exp-card:not(.exp-card--current):not(.exp-card--always-open) {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -1587,7 +1694,7 @@ body::-webkit-scrollbar {
     border-radius: var(--radius-small);
     padding: 14px 18px;
     color: var(--white-color);
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     font-size: 0.9rem;
     transition: border-color 0.3s ease;
     resize: vertical;
@@ -1611,7 +1718,7 @@ body::-webkit-scrollbar {
     border: none;
     border-radius: var(--radius-small);
     padding: 14px 30px;
-    font-family: var(--font-main);
+    font-family: var(--font-main), sans-serif;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
@@ -1743,3 +1850,5 @@ body::-webkit-scrollbar {
         padding: 24px 2rem;
     }
 }
+
+
